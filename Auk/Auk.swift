@@ -295,6 +295,21 @@ public class Auk {
     
     return images
   }
+    
+    /// Returns array of currently visible image views. Placeholder images are not returned here.
+    public var imageViews: [UIImageView] {
+        guard let scrollView = scrollView else { return [] }
+        
+        var imageViews = [UIImageView]()
+        
+        for page in AukScrollViewContent.aukPages(scrollView) {
+            if let imageView = page.imageView {
+                imageViews.append(imageView)
+            }
+        }
+        
+        return imageViews
+    }
 
   /**
 
